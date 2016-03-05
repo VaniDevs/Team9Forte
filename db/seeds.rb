@@ -24,3 +24,7 @@ badges << Badge.create(name: "Workplace Communication", skill_type: "soft_skill"
 test_user = User.create(email: "test@test.com", password: "testtest", password_confirmation: "testtest")
 test_user.badges << badges.first
 test_user.badges << badges.last
+
+test_agency = Agency.create(email: "test@knack.com", password: "testtest", password_confirmation: "testtest")
+
+test_employer = Employer.create(email: "test@saveonmeats.com", password: "testtest", password_confirmation: "testtest")
