@@ -1,0 +1,19 @@
+current directory: /home/nwpan/forte/forte/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+/home/nwpan/.rvm/rubies/ruby-2.3.0/bin/ruby -r ./siteconf20160305-4345-12cdz1.rb extconf.rb
+creating Makefile
+
+current directory: /home/nwpan/forte/forte/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/nwpan/forte/forte/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling threads.c
+compiling byebug.c
+compiling locker.c
+compiling context.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/nwpan/forte/forte/vendor/bundle/gems/byebug-8.2.2/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20160305-4345-rj7m5v/byebug
