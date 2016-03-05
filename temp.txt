@@ -1,0 +1,25 @@
+
+git pull origin master
+
+psql forte_development
+forte_development-# create role forte_dev with createdb login password 'testtest';
+forte_development-# \dt
+
+rails generate controller welcome
+
+// handy commands
+
+bin/rails server
+
+bin/rails generate
+
+bin/rake db:migrate
+
+bin/rake db:seed
+
+bin/rails console
+
+    exit
+
+bin/rake routes
+
