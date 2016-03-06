@@ -1,6 +1,11 @@
-<% @classes.each do |course| %>
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+	<% @classes.each do |course| %>
 	<ul class="course">
 		<li><h3><%= course.name %></h3></li>
 		<li>Max Capacity: <%= course.capacity %></li>
+		<li><%= link_to("Sign Up for the class", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %></li>
 	</ul>
 <% end %>
+	</div>
+</div>
