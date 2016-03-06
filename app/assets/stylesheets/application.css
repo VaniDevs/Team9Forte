@@ -20,13 +20,9 @@
    position:relative;
    margin:0;
  }
- #content{
-   width:100%;
-   position: relative;
-   min-height:750px;
- }
 h1{
   font-size:2.857em;
+  color:#fff;
 }
 #map{
   height:350px;
@@ -40,7 +36,7 @@ h1{
 input[type="submit"]{
   display: block;
   box-sizing: border-box;
-  padding:15px;
+  padding:10px;
   width:200px;
-  height:35px;
+  height:auto;
 }

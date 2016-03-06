@@ -60,10 +60,7 @@
               <% elsif agency_signed_in? %>
                 <li><%= link_to 'Tasks', tasks_path %></li>
                 <li><%= link_to 'Classes', classes_path %></li>
-                <li><%= link_to 'Assign Badges', users_path %></li>
-
                 <li><p class="navbar-text"><span>Hello <%= link_to current_agency.email, "/agencies/#{current_agency.id}" %></span> <span>(<%= link_to "not you?", destroy_agency_session_path, :method => :delete %>)</span> !</p></li>
-
               <% else %>
                 <li><%= link_to 'Sign in', new_user_session_path %></li>
               <% end %>
@@ -71,6 +68,7 @@
         </div>
       </div>
     </div>
+<div id="content">
   <div class="container">
       <div class="row">
         <div class="col-lg-12">
@@ -84,6 +82,7 @@
       </footer>
 
     </div> <!-- /container -->
+</div><!-- /content -->
   </body>
 
 </html>
