@@ -15,7 +15,7 @@ function initMap() {
            zoom: 10
        });
       // !!! replace temp with method to get array
-       var temp = [{address:'2378 west 8th avenue, Vancouver, BC'},{address:'325 howe street, Vancouver, BC'}]
+       var temp = [{address:'325 howe street, Vancouver, BC'}]
        handlePostLocation(temp);
 
     });
