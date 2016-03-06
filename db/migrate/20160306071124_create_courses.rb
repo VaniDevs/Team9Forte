@@ -4,7 +4,7 @@ class CreateCourses < ActiveRecord::Migration
       t.string   :name
       t.string   :description
       t.integer  :status, default: 0, null: false
-      t.integer  :capacity, default: 0, null: false
+      t.integer  :capacity, default: 20, null: false
       t.datetime :start_date
       t.datetime :end_date
 
