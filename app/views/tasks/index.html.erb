@@ -11,5 +11,9 @@
 				<li>Requires: </li>
 			</ul>
 		<% end %>
+<% if (employer_signed_in?) %>
+<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, new_task_path, class: "btn btn-primary" %>
+<% end %>
+
 	</div>
 </div>
