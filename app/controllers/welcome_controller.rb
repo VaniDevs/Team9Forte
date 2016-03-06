@@ -3,4 +3,6 @@ class WelcomeController < ApplicationController
 
   def index
   end
+  def portal
+  end
 end

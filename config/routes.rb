@@ -57,6 +57,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :welcome
+
+  get 'portal', :to => 'welcome#portal'
+  
   resources :users do
     get 'profile'
   end
