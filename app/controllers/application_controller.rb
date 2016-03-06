@@ -23,5 +23,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def signed_in
+    if (user_signed_in? || !employer_signed_in? || !agency_signed_in?)
+      redirect_to dashboard_index_path
+      return true
+    end
+    return false
+  end
+
   before_action :authenicate_override
 end
