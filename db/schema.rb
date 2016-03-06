@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160305235423) do
+ActiveRecord::Schema.define(version: 20160306005740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20160305235423) do
     t.datetime "updated_at",              null: false
   end
 
+  create_table "employer_tasks", force: :cascade do |t|
+    t.integer  "employer_id"
+    t.integer  "task_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "employer_tasks", ["employer_id"], name: "index_employer_tasks_on_employer_id", using: :btree
+  add_index "employer_tasks", ["task_id"], name: "index_employer_tasks_on_task_id", using: :btree
+
   create_table "employers", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -65,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160305235423) do
     t.string   "title"
     t.string   "description"
     t.string   "address"
-    t.datetime "start_date",  default: '2016-03-06 00:52:12'
-    t.datetime "end_date",    default: '5327-12-14 00:52:12'
+    t.datetime "start_date",  default: '2016-03-06 01:00:13'
+    t.datetime "end_date",    default: '5327-12-14 01:00:13'
     t.decimal  "duration",    default: 0.0
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
