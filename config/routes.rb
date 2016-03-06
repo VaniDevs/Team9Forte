@@ -78,5 +78,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :dashboard
+
   root to: "welcome#index"
 end
