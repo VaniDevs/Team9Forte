@@ -14,9 +14,9 @@ function initMap() {
            center: {lat: pos.lat, lng: pos.lng},
            zoom: 10
        });
-       infowindow = new google.maps.InfoWindow({map:map});
-       infowindow.setPosition(pos);
-       infowindow.setContent("Debugging window. SUCCESS!");
+      infowindow = new google.maps.InfoWindow({map:map});
+//       infowindow.setPosition(pos);
+//       infowindow.setContent("Debugging window. SUCCESS!");
       // !!! replace temp with method to get array
        var temp = [{address:'2378 west 8th avenue, Vancouver, BC'},{address:'325 howe street, Vancouver, BC'}]
        handlePostLocation(temp);
@@ -38,14 +38,22 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 var temp = [{address: '44 Water St, Canada'},{address:'325 howe street vancouver bc canada'}]
 
 function handlePostLocation (arr) {
-  var geocoder = new google.maps.Geocoder();
 
+
+  var geocoder = new google.maps.Geocoder();
+  infowindow = new google.maps.InfoWindow({map:map});
   for(var i=0;i<arr.length;i++){
     geocoder.geocode({'address': arr[i].address, country: 'CA'}, function (results, status){
+      var marker;
       if (status == google.maps.GeocoderStatus.OK){
-        var marker = new google.maps.Marker({
+        marker = new google.maps.Marker({
           map: map,
-          position: results[0].geometry.location
+          position: results[0].geometry.location,
+          name: results[0].formatted_address
+        });
+        google.maps.event.addListener(marker, 'click', function() {
+          infowindow.open(map, marker);
+          infowindow.setContent(marker.name)
         });
       }
     });
@@ -75,4 +83,3 @@ window['handlePostLocation'] = handlePostLocation;
 //
 //   };
 // })(this));
-
