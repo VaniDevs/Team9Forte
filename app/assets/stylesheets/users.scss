@@ -28,6 +28,9 @@ $color4: #A7A8AA; //cool grey
     padding:5px;
     margin-bottom:10px;
   }
+  li:hover{
+    background-color:$color2;
+  }
 }
 .achievement{
   text-align: center;
@@ -51,4 +54,9 @@ $color4: #A7A8AA; //cool grey
 
 .badge-box{
   border:1px solid $color4;
+  border-radius:4px;
+  box-shadow:5px 5px 5px $color4;
+  min-height:250px;
+  padding:10px 0 5px;
+  text-align:center;
 }

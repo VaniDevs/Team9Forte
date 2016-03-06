@@ -1,3 +1,31 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$color1: #468074; //dark green
+$color2: #A4D65E; //light green
+$color3: #FFD100; //yellow
+$color4: #A7A8AA; //cool grey
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+
+.home{
+  background-color:$color4;
+  display: block;
+  width: 100%;
+  height: auto;
+  position:relative;
+  text-align:center;
+}
+.signin{
+  padding:15px;
+  width:50%;
+  margin:15px auto;
+  background-color:rgba(255,255,255,0.5);
+  display:block;
+  @include border-radius(10px);
+}
