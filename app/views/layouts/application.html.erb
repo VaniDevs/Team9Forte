@@ -45,11 +45,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="#"><%= image_tag("knack_icon.png", height: "50", alt: "Brand") %></a>
+        <%= link_to image_tag("knack_icon.png", height: "50", alt: "Brand"), url_for({controller: "welcome", action: "index"}), class: "navbar-brand" %>
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
               <% if user_signed_in? %>
-                <li>Hello <%= current_user.email %> <span>(<%= link_to "not you?", destroy_user_session_path, :method => :delete %>)</span> !</li>
+                <li><span>Hello <%= link_to current_user.email, "/users/#{current_user.id}" %></span> <span>(<%= link_to "not you?", destroy_user_session_path, :method => :delete %>)</span> !</li>
                 <% else %>
                 <li><%= link_to 'Sign in', new_user_session_path %></li>
               <% end %>
