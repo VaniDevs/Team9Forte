@@ -10,15 +10,20 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+		respond_to do |format|
+			format.html
+			format.js
+		end
   end
 
   def create
-    #  redirect to tasks_path if current_user is not an employer
 		begin
-    	employer = Employer.find(email: current_user.email)
+    	employer = Employer.find_by(email: current_employer.email)
     rescue ActiveRecord::RecordNotFound => e
       redirect_to tasks_path, :flash => { :error => "Cannot find the employer!" } and return
     end
+
+		debugger
 
     @task = Task.new(task_params)
 

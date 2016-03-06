@@ -3,16 +3,18 @@
 <!-- The href of the button to launch the modal must match the id of the modal dialog. -->
 <hr>
 <% @users.each do |user| %>
-  <p><%= user.email %>
-      <% user.badges.each do |badge| %>
-         , <%= badge.name %>
-      <% end %>
+  <div>
       <%= form_for @userbadge  do |f| %>
           <%= f.hidden_field :user_id, :value => user.id %>
-          <%= f.select :badge_id, options_for_select(@badges.collect { |badge| [badge.name, badge.id] }, 1), {}, { id: 'badges_select' } %>
+          <%= user.email %>
+          <% user.badges.each do |badge| %>
+             , <%= badge.name %>
+          <% end %>
 
+          <%= select("user_badge", "badge_id", Badge.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
 
-          <%= f.submit "Save" %>
+         <%= f.submit "Save" %>
       <% end %>
-  </p>
+  </div>
 <% end %>
+

@@ -12,10 +12,15 @@
  *
  *= require_tree .
  *= require_self
+ *= require rails_bootstrap_forms
+ *= require bootstrap-datepicker
  *= require bootstrap_and_overrides
  */
 h1{
   font-size:2.857em;
+}
+#map{
+  height:350px;
 }
 .form{
   text-align: left;

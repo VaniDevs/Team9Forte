@@ -1,0 +1,26 @@
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { display:none; }
+.ui-autocomplete { position: relative; float: left;}
+.ui-menu {
+  list-style: none;
+  padding: 5px;
+  margin: 0;
+  display: block;
+  background: #eee none no-repeat;
+  outline: none;
+}
+.apply{
+  background-color:#A4D65E;
+  padding:5px 10px;
+  color:#fff;
+  position:absolute;
+  font-size:1.14em;
+  right:5%;
+  top:30%;
+  text-decoration:none;
+}
+.apply:hover{
+  background-color:#468074;
+  color:#fff;
+  text-decoration:none;
+}
