@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'sqlite3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use postgresql as the database for Active Record
@@ -16,6 +16,7 @@ gem "less-rails"
 gem 'therubyracer', platforms: :ruby
 gem "twitter-bootstrap-rails"
 
+gem 'tzinfo-data'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
@@ -26,6 +27,16 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'devise'
+
+gem 'geocoder'
+
+gem 'rails3-jquery-autocomplete'
+
+gem 'jquery-ui-rails'
+
+gem 'bootstrap_form'
+
+gem 'bootstrap-datepicker-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

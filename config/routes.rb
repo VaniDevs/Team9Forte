@@ -57,6 +57,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :welcome
+
+  get 'portal', :to => 'welcome#portal'
+
   resources :users do
     get 'profile'
   end
@@ -66,6 +69,16 @@ Rails.application.routes.draw do
   resources :classes
 
   resources :user_badges
+
+  resources :employers
+
+  resources :agencies
+
+  resources :search do
+    collection do
+      get "location"
+    end
+  end
 
   root to: "welcome#index"
 
