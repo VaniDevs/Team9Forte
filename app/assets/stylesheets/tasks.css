@@ -24,8 +24,18 @@
   color:#fff;
   text-decoration:none;
 }
-
+.denied{
+  background-color:#d9534f;
+  padding:5px 10px;
+  margin-top:20px;
+  color:#fff;
+  position:absolute;
+  font-size:1.14em;
+  right:5%;
+  top:30%;
+  text-decoration:none;
+  pointer-events: none;
+}
 .badges-required{
   display:none;
 }
-

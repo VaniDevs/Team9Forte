@@ -1,10 +1,14 @@
 class TasksController < ApplicationController
-	before_action except: [:index] do |controller|
+	before_action except: [:index, :apply] do |controller|
 		controller.restrict_by_type(Employer.to_s, tasks_path)
 	end
 
 	def index
-		@tasks = Task.all
+		if (user_signed_in? || agency_signed_in?)
+			@tasks = Task.all
+		elsif (employer_signed_in?)
+			@tasks = current_employer.tasks
+		end
 	end
 
 
@@ -37,12 +41,46 @@ class TasksController < ApplicationController
     end
   end
 
+	def edit
+		@task = current_employer.tasks.find(id_params[:id])
+	end
+
+	def update
+		@task = current_employer.tasks.find(id_params[:id])
+
+		if (@task.update_attributes(task_params))
+			redirect_to tasks_path, :notice  => "Successfully updated task."
+		else
+			redirect_to edit_task_path(@task), :error  => "#{@task.errors.full_messages.join(', ')}"
+		end
+	end
+
+	def destroy
+		@task = current_employer.tasks.find(id_params[:id])
+		respond_to do |format|
+			current_employer.tasks.delete(@task)
+			format.js
+		end
+	end
+
+	def apply
+		task = Task.find(id_params[:id])
+
+		current_user.tasks << task
+		respond_to do |format|
+			format.js
+		end
+	end
+
   protected
 
   # security issue, Rails has adopted a standard called "strong parameters" for mass assignment.
   def task_params
     params.require(:task).permit(:title, :description, :address, :start_date, :end_date, :duration)
-
   end
+
+	def id_params
+		params.permit(:id)
+	end
 
 end

@@ -64,7 +64,12 @@ Rails.application.routes.draw do
     get 'profile'
   end
 
-  resources :tasks
+  resources :tasks do
+    collection do
+      post "apply"
+    end
+
+  end
 
   resources :classes
 

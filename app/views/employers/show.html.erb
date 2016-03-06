@@ -5,24 +5,20 @@
   <h5>Member since 2015</h5>
   <h3>Settings <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h3>
   <ul>
+    <li>Dashboard</li>
     <li>View Profile</li>
-    <li>Account Setting</li>
-    <li>My Jobs Posting</li>
-    <li>Contacts & Lists</li>
-    <li>Following</li>
-    <li>Verification</li>
   <ul>
 </div>
-<div class="col-md-8 col-md-offset-1">
+<div class="col-md-9">
   <h2>Jobs Posting</h2>
-  <div class="row">
-      <div class="col-xs-12">
-        <ul>
-          <li>
-            <h3>Dishwasher</h3><h4>Posted 3 days ago</h4>
-          </li>
+  <div class="row tasks">
+    <div class="col-xs-12">
+      <% @tasks.each do |task| %>
+        <ul class="task">
+          <li><h3><%= task.title %></h3></li>
+          <li><p><%= task.description %></p></li>
         </ul>
-      </div>
+      <% end %>
+    </div>
   </div>
 </div>
-

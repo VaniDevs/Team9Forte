@@ -1,24 +1,13 @@
-<div class="col-md-3 profile">
-  <%= image_tag("profile.jpg", size: "150", alt: "Badges") %>
-  <h2>Profile Name</h2>
-  <h5>Member since 2015</h5>
-  <h3>Settings <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h3>
-  <ul>
-    <li>View Profile</li>
-    <li>Account Setting</li>
-    <li>My Credit</li>
-    <li>Contacts & Lists</li>
-    <li>Following</li>
-    <li>Verification</li>
-  <ul>
-</div>
+<%= render partial: "nav" %>
 <div class="col-md-9">
   <h2>Achievements</h2>
   <div class="row achievement">
-      <div class="col-md-3"><div class="circle-1">0</div><p>Credit Earned</p></div>
-      <div class="col-md-3"><div class="circle-2">0</div><p>Credit Given</p></div>
-      <div class="col-md-3"><div class="circle-3">0</div><p>Saved in Lists</p></div>
-      <div class="col-md-3"><div class="circle-4">0</div><p>Trusted by</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @earned_count %></div><p>Badges Earned</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @tasks_applied_count %></div><p>Tasks Applied</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @tasks_accepted_count %></div><p>Tasks Accepted</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @courses_applied_count %></div><p>Courses Applied</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @courses_accepted_count %></div><p>Courses Accepted</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @courses_completed_count %></div><p>Courses Completed</p></div>
   </div>
   <h2>Badges</h2>
   <div class="row">

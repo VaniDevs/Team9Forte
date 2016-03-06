@@ -24,8 +24,8 @@ badges << Badge.create(name: "Workplace Communication", skill_type: "soft_skill"
 test_user = User.create(email: "test@test.com", password: "testtest", password_confirmation: "testtest")
 test_user2 = User.create(email: "test2@test.com", password: "testtest", password_confirmation: "testtest")
 test_user3 = User.create(email: "test3@test.com", password: "testtest", password_confirmation: "testtest")
-test_user.badges << badges.first
-test_user.badges << badges.last
+test_user.badges << Badge.find_by(name: "Tools & Equipment")
+test_user.badges << Badge.find_by(name: "Teamwork")
 
 test_user2.badges << badges.first
 test_user2.badges << badges.last
@@ -41,11 +41,14 @@ test_employer = Employer.create(email: "test@saveonmeats.com", password: "testte
 tasks = Array.new
 tasks << Task.create(title: "Dishwasher", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque elementum lorem facilisis felis pharetra tempor. In mi justo, posuere in tincidunt non, condimentum euismod erat.", duration: 1, address: "43 W Hastings St, Vancouver, BC V6B 1G4", start_date: "03/05/2016 00:00", end_date: "03/06/2016 00:00")
 
+tasks.first.badges << Badge.find_by(name: "Tools & Equipment")
+tasks.first.badges << Badge.find_by(name: "Teamwork")
+tasks.first.badges << Badge.find_by(name: "Time Management")
+
 test_employer.tasks = tasks
 
-test_user.tasks << tasks.first
+#test_user.tasks << tasks.first
 
 
 courses = Array.new
 courses << Course.create(name: Badge.first.name, description: Badge.first.name, status: 0, badge_id: Badge.first.id, start_date: Time.now, end_date: Time.now, capacity: 1)
-
