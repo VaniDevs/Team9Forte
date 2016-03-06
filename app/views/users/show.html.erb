@@ -12,10 +12,12 @@
 <div class="col-md-9">
   <h2>Achievements</h2>
   <div class="row achievement">
-      <div class="col-md-3"><div class="circle-1">0</div><p>Credit Earned</p></div>
-      <div class="col-md-3"><div class="circle-2">0</div><p>Credit Given</p></div>
-      <div class="col-md-3"><div class="circle-3">0</div><p>Saved in Lists</p></div>
-      <div class="col-md-3"><div class="circle-4">0</div><p>Trusted by</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @earned_count %></div><p>Badges Earned</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @tasks_applied_count %></div><p>Tasks Applied</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @tasks_accepted_count %></div><p>Tasks Accepted</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @courses_applied_count %></div><p>Courses Applied</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @courses_accepted_count %></div><p>Courses Accepted</p></div>
+      <div class="col-md-2"><div class="circle-1"><%= @courses_completed_count %></div><p>Courses Completed</p></div>
   </div>
   <h2>Badges</h2>
   <div class="row">
