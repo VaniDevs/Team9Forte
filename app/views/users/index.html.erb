@@ -15,9 +15,8 @@
 
           <%= select("user_badge", "badge_id", Badge.all.collect {|p| [ p.name, p.id ] } ) %>
 
-         <%= f.submit "Save" ,class: "btn btn-primary" %>
+         <%= f.submit "Save" ,class: "btn btn-primary save" %>
 
       <% end %>
   </div>
 <% end %>
-
