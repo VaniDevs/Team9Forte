@@ -13,6 +13,7 @@ class TasksController < ApplicationController
 
 
   def new
+    @employer = current_employer
     @task = Task.new
 		respond_to do |format|
 			format.html
@@ -21,8 +22,10 @@ class TasksController < ApplicationController
   end
 
   def create
+    # byebug
+
 		begin
-    	employer = Employer.find_by(email: current_employer.email)
+    	employer = Employer.find(params[:task][:employer_id])
     rescue ActiveRecord::RecordNotFound => e
       redirect_to tasks_path, :flash => { :error => "Cannot find the employer!" } and return
     end

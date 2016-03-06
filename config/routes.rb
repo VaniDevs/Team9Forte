@@ -88,6 +88,9 @@ Rails.application.routes.draw do
 
   resources :dashboard
 
+  get  '/courses/new',     to: 'classes#new'
+  post '/courses',         to: 'classes#create'
+
   root to: "welcome#index"
 
 end
