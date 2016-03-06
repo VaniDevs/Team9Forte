@@ -49,13 +49,12 @@
         <div class="navbar-collapse collapse navbar-responsive-collapse">
           <ul class="nav navbar-nav">
               <% if user_signed_in? %>
-                <li>Hello <%= current_user.email %> !</li>
-                <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+                <li>Hello <%= current_user.email %> <span>(<%= link_to "not you?", destroy_user_session_path, :method => :delete %>)</span> !</li>
                 <% else %>
                 <li><%= link_to 'Sign in', new_user_session_path %></li>
               <% end %>
-              <li><%= link_to 'About', new_user_session_path %></li>
-              <li><%= link_to 'Contact Us', new_user_session_path %></li>
+              <li><%= link_to 'Tasks', new_user_session_path %></li>
+              <li><%= link_to 'Classes', new_user_session_path %></li>
           </ul>
         </div>
       </div>
