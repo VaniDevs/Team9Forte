@@ -1,6 +1,6 @@
 class UserTask < ActiveRecord::Base
 	include ActiveModel::Validations
-	
+
 	enum task_type: [ :applied, :accepted, :denied ]
 
 	validates :user_id, uniqueness: true
@@ -18,6 +18,5 @@ class UserTask < ActiveRecord::Base
 		if (user_badges.count != badge_tasks.count)
       errors.add(:user_id, 'User failed to meet requirements of task.')
     end
-
 	end
 end

@@ -68,10 +68,13 @@ Rails.application.routes.draw do
     collection do
       post "apply"
     end
-
   end
 
-  resources :classes
+  resources :classes do
+    collection do
+      post "apply"
+    end
+  end
 
   resources :user_badges
 

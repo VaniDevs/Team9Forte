@@ -1,5 +1,5 @@
 class ClassesController < ApplicationController
-  before_action except: [:index] do |controller|
+  before_action except: [:index, :apply] do |controller|
     controller.restrict_by_type(Agency.to_s, classes_path)
   end
 
@@ -26,8 +26,6 @@ class ClassesController < ApplicationController
       redirect_to classes_path, :flash => { :error => "Cannot find the agency!" } and return
     end
 
-    byebug
-
     @class = Course.new(class_params)
 
     agency.courses << @class
@@ -39,11 +37,23 @@ class ClassesController < ApplicationController
     end
   end
 
+  def apply
+		course = Course.find(id_params[:id])
+
+		current_user.courses << course
+		respond_to do |format|
+			format.js
+		end
+	end
+
   protected
 
   # security issue, Rails has adopted a standard called "strong parameters" for mass assignment.
   def class_params
     params.require(:course).permit(:name, :description, :status, :capacity, :start_date, :end_date)
+  end
 
+  def id_params
+    params.permit(:id)
   end
 end

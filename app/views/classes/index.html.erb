@@ -18,6 +18,7 @@
 			</div>
 		</div>
 	<% @classes.each do |course| %>
+		<% user_course = current_user.user_courses.find_by(user_id: current_user.id, course_id: course.id) if user_signed_in? %>
 		<div class="row course">
 			<div class="col-md-4">
 						<h3><%= course.name %></h3>
@@ -34,7 +35,11 @@
 				<p><strong><%= course.end_date %></strong></p>
 			</div>
 			<div class="col-md-2">
-				<a href="/" class="apply">Sign Up for the class</a>
+				<% if (user_signed_in? && user_course.nil?) %>
+					<%= link_to("Apply", { :action => "apply", :id => course.id }, class: "apply", method: :post, remote: true) %>
+				<% elsif (user_signed_in? && !user_course.nil?) %>
+					Applied
+				<% end %>
 			</div>
 
 		</div>

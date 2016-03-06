@@ -40,3 +40,12 @@ input[type="submit"]{
   width: 100%;
   height:auto;
 }
+.forte-users-badge-assign input[type="submit"]{
+  display: inline-block;
+  max-width: 100px;
+}
+
+.forte-users-badge-assign{
+  border-bottom: 1px solid gray;
+  padding: 20px 0 20px 0;
+}
