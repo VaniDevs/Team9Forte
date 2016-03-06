@@ -1,1 +1,6 @@
-Hello
+<% @classes.each do |course| %>
+	<ul class="course">
+		<li><h3><%= course.name %></h3></li>
+		<li>Max Capacity: <%= course.capacity %></li>
+	</ul>
+<% end %>

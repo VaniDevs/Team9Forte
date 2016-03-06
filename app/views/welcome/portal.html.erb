@@ -1,9 +1,9 @@
 <div class="row portal">
+  <p class="well">Welcome! This page is an exclusive login for Agencies and Employers. Please select an appropriate login below.</p>
   <div class="col-xs-10 col-xs-offset-1">
-    <ul>
-        <li>I am an Earner</li>
-        <li>I am an Agency</li>
-        <li>I am an Employer</li>
-    </ul>
+    <div class="col-md-12">
+      <div class="col-md-6 text-right"><%= link_to "I am an Agency", new_employer_session_path, class: "btn btn-success btn-lg" %></div>
+      <div class="col-md-6 text-left"><%= link_to "I am an Employer", new_agency_session_path, class: "btn btn-success btn-lg" %></div>
+    </div>
   </div>
 </div>
