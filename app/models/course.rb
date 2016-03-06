@@ -6,4 +6,7 @@ class Course < ActiveRecord::Base
 
   has_many :agency_classes
   has_many :agencies, through: :agency_classes
+
+  has_many :user_courses
+	has_many :users, through: :user_courses
 end

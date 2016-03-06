@@ -10,10 +10,9 @@ class UsersController < ApplicationController
     @earned_count = @badges.count
     @tasks_applied_count = current_user.user_tasks.where(task_type: 0).count
     @tasks_accepted_count = current_user.user_tasks.where(task_type: 1).count
-    debugger
-    @courses_applied_count = 0
-    @courses_accepted_count = 0
-    @courses_completed_count = 0
+    @courses_applied_count = current_user.user_courses.where(status: 0).count
+    @courses_accepted_count = current_user.user_courses.where(status: 1).count
+    @courses_completed_count = current_user.user_courses.where(status: 2).count
 
   end
 end

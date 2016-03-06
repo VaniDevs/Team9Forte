@@ -34,7 +34,9 @@
 				<p><strong><%= course.end_date %></strong></p>
 			</div>
 			<div class="col-md-1">
-				<%= link_to("Sign Up for the class") %>
+				<% if (user_signed_in?) %>
+					<%= link_to("Apply", { :action => "apply", :id => course.id }, class: "apply", method: :post, remote: true) %>
+				<% end %>
 			</div>
 
 		</div>
