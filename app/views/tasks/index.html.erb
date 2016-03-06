@@ -9,31 +9,54 @@
 		<% @tasks.each do |task| %>
 			<% user_task = current_user.user_tasks.find_by(user_id: current_user.id, task_id: task.id) if user_signed_in? %>
 			<% meets_req = UserTask.new(user_id: current_user.id, task_id: task.id).valid? if user_signed_in?  %>
-			<ul class="task">
-				<li><h3><%= task.title %><% if (employer_signed_in?) %>&nbsp;<%= link_to "<i class=\"fa fa-wrench\"></i>".html_safe, edit_task_path(task) %>&nbsp;<%= link_to "<i class=\"fa fa-trash-o\"></i>".html_safe, task_path(task), method: :delete, remote: true %><% end %></h3></li>
-				<li><h4>Address - <%= task.address %></h4></li>
-				<li><h5>Duration: <%= task.duration %></h5></li>
-				<% if user_signed_in? %><li><h5>Status: <%= user_task.nil? ? "Not Applied" : user_task.task_type.to_s.humanize %></h5></li><% end %>
-				<li><p><%= task.description %></p></li>
 
-				<li><a href="/" class="showBadge" onclick="return false"/>View the list of required badges</a></li>
-				<li class="badges-required">
-					<ul>
-							<% task.badges.each do |badge| %>
-							<li>
-		            <%= image_tag(badge.image, size: "150", alt: "Badges") %>
-		            <p><%= badge.name %></p>
-							</li>
-							<% end %>
-					</ul>
-
-				</li>
-				<% if (user_signed_in? && user_task.nil? && meets_req) %>
-					<li><%= link_to("Apply", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %></li>
-				<% elsif (user_task.nil? && !meets_req) %>
-					<li><a href="javascript:" class="denied">Does Not Meet Requirements</a></li>
-				<% end %>
-			</ul>
+				<div class="col-md-12 row">
+					<div class="col-md-8 row">
+						<div class="col-md-12">
+							<h3>
+								<%= task.title %>
+								<% if (employer_signed_in?) %>
+									&nbsp;<%= link_to "<i class=\"fa fa-wrench\"></i>".html_safe, edit_task_path(task) %>&nbsp;<%= link_to "<i class=\"fa fa-trash-o\"></i>".html_safe, task_path(task), method: :delete, remote: true %>
+								<% end %>
+							</h3>
+						</div>
+						<div class="col-md-12">
+							<h4>Address - <%= task.address %></h4>
+						</div>
+						<div class="col-md-12">
+							<h5>Duration: <%= task.duration %></h5>
+						</div>
+						<div class="col-md-12">
+							<% if user_signed_in? %><h5>Status: <%= user_task.nil? ? "Not Applied" : user_task.task_type.to_s.humanize %></h5><% end %>
+						</div>
+						<div class="col-md-12">
+							<p><%= task.description %></p>
+						</div>
+						<div class="col-md-12">
+							<a href="/" class="showBadge" onclick="return false"/>View the list of required badges</a>
+						</div>
+						<div class="col-md-12 badges-required">
+							<ul>
+									<% task.badges.each do |badge| %>
+									<li>
+										<%= image_tag(badge.image, size: "150", alt: "Badges") %>
+										<p><%= badge.name %></p>
+									</li>
+									<% end %>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<% if (user_signed_in? && user_task.nil? && meets_req) %>
+							<%= link_to("Apply", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %>
+						<% elsif (user_task.nil? && !meets_req) %>
+							<a href="javascript:" class="denied">Missing Required Badge</a>
+						<% end %>
+					</div>
+					<div class="col-xs-12">
+						<hr class="clearfix" />
+					</div>
+				</div>
 		<% end %>
 <% if (employer_signed_in?) %>
 <%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, new_task_path, class: "btn btn-primary" %>
