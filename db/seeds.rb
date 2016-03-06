@@ -34,7 +34,7 @@ tasks << Task.create(title: "Dishwasher", description: "Lorem ipsum dolor sit am
 
 test_employer.tasks = tasks
 
-test_user.tasks << tasks.first
+#test_user.tasks << tasks.first
 
 courses = Array.new
 courses << Course.create(name: Badge.first.name, description: Badge.first.name, status: 0, badge_id: Badge.first.id, start_date: Time.now, end_date: Time.now, capacity: 1)

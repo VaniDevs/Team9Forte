@@ -7,10 +7,12 @@
 <div class="row tasks">
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
 		<% @tasks.each do |task| %>
+			<% user_task = current_user.user_tasks.find_by(user_id: current_user.id, task_id: task.id) if user_signed_in? %>
 			<ul class="task">
 				<li><h3><%= task.title %></h3></li>
 				<li><h4>Address - <%= task.address %></h4></li>
 				<li><h5>Duration: <%= task.duration %></h5></li>
+				<% if user_signed_in? %><li><h5>Status: <%= user_task.nil? ? "Not Applied" : user_task.task_type.to_s.humanize %></h5></li><% end %>
 				<li><p><%= task.description %></p></li>
 				<li><a href="/" class="showBadge" onclick="return false"/>View the list of required badges</a></li>
 				<li class="badges-required">
@@ -21,7 +23,9 @@
 							</li>
 					</ul>
 				</li>
-				<li><a href="/" class="apply">Apply</a></li>
+				<% if (user_signed_in? && user_task.nil?) %>
+					<li><%= link_to("Apply", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %></li>
+				<% end %>
 			</ul>
 		<% end %>
 <% if (employer_signed_in?) %>

@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-	before_action except: [:index] do |controller|
+	before_action except: [:index, :apply] do |controller|
 		controller.restrict_by_type(Employer.to_s, tasks_path)
 	end
 
@@ -23,8 +23,6 @@ class TasksController < ApplicationController
       redirect_to tasks_path, :flash => { :error => "Cannot find the employer!" } and return
     end
 
-		debugger
-
     @task = Task.new(task_params)
 
     employer.tasks << @task
@@ -36,12 +34,24 @@ class TasksController < ApplicationController
     end
   end
 
+	def apply
+		task = Task.find(id_params[:id])
+
+		current_user.tasks << task
+		respond_to do |format|
+			format.js
+		end
+	end
+
   protected
 
   # security issue, Rails has adopted a standard called "strong parameters" for mass assignment.
   def task_params
     params.require(:task).permit(:title, :description, :address, :start_date, :end_date, :duration)
-
   end
+
+	def id_params
+		params.permit(:id)
+	end
 
 end
