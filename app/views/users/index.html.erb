@@ -13,7 +13,7 @@
              , <%= badge.name %>
           <% end %>
 
-          <%= select("user_badge", "badge_id", Badge.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
+          <%= select("user_badge", "badge_id", Badge.all.collect {|p| [ p.name, p.id ] } ) %>
 
          <%= f.submit "Save" ,class: "btn btn-primary" %>
 
