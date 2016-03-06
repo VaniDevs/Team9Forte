@@ -1,7 +1,7 @@
 
 var map;
 function initMap() {
-  var infowindow, current;
+  var current;
 
   if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position) {
@@ -14,9 +14,6 @@ function initMap() {
            center: {lat: pos.lat, lng: pos.lng},
            zoom: 10
        });
-      infowindow = new google.maps.InfoWindow({map:map});
-//       infowindow.setPosition(pos);
-//       infowindow.setContent("Debugging window. SUCCESS!");
       // !!! replace temp with method to get array
        var temp = [{address:'2378 west 8th avenue, Vancouver, BC'},{address:'325 howe street, Vancouver, BC'}]
        handlePostLocation(temp);
@@ -24,7 +21,7 @@ function initMap() {
     });
   }else{
     // Browser doesn't support Geolocation
-      handleLocationError(false, infoWindow, map.getCenter());
+      handleLocationError(false, map.getCenter());
   }
 }
 
@@ -38,10 +35,10 @@ function handleLocationError(browserHasGeolocation, infoWindow, pos) {
 var temp = [{address: '44 Water St, Canada'},{address:'325 howe street vancouver bc canada'}]
 
 function handlePostLocation (arr) {
+var geocoder, infowindow;
 
-
-  var geocoder = new google.maps.Geocoder();
-  infowindow = new google.maps.InfoWindow({map:map});
+  geocoder = new google.maps.Geocoder();
+  infowindow = new google.maps.InfoWindow();
   for(var i=0;i<arr.length;i++){
     geocoder.geocode({'address': arr[i].address, country: 'CA'}, function (results, status){
       var marker;
