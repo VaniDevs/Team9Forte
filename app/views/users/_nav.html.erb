@@ -1,0 +1,11 @@
+<div class="col-md-3 profile">
+  <%= image_tag("profile.jpg", size: "150", alt: "Badges") %>
+  <h2>Profile Name</h2>
+  <h5>Member since 2015</h5>
+  <h3>Settings <span class="glyphicon glyphicon-cog" aria-hidden="true"></span></h3>
+  <ul>
+    <li><%= link_to "Dashboard", "/users/#{current_user.id}" %></li>
+    <li><%= link_to "Profile", "/users/#{current_user.id}/profile" %></li>
+    <li><%= link_to "Account Setting", "/users/#{current_user.id}/profile" %></li>
+  </ul>
+</div>
