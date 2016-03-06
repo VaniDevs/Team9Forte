@@ -7,5 +7,12 @@ class ApplicationController < ActionController::Base
     "/users/#{current_user.id}"
   end
 
+  def restrict_by_type(expected_type)
+    if (current_user.class.to_s != expected_type)
+      session[:return_to] ||= request.referer
+      redirect_to session.delete(:return_to)
+    end
+  end
+
   before_action :authenticate_user!
 end

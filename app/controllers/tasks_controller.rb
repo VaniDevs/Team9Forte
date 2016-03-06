@@ -1,21 +1,18 @@
 class TasksController < ApplicationController
+	before_action { |controller| controller.restrict_by_type(Employer.to_s)}, except: [:index]
+
 	def index
 		@tasks = Task.all
 	end
 
 
   def new
-
     @task = Task.new
-
   end
 
   def create
-
-    debugger
-
     #  redirect to tasks_path if current_user is not an employer
-    employer = Employer.find(current_user.id)
+    employer = Employer.find(email: current_user.email)
 
     if !employer
       redirect_to tasks_path
