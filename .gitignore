@@ -19,3 +19,9 @@ Gemfile.lock
 /db/schema.rb
 
 .byebug_history
+
+app/views/users/_assign_badges.html.erb
+app/views/users/backup.index.html.erb
+app/controllers/project_controller.rb
+app/assets/javascripts/users.js
+config/database.yml

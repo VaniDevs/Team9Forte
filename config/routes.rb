@@ -73,6 +73,8 @@ Rails.application.routes.draw do
 
   resources :classes
 
+  resources :user_badges
+
   resources :employers
 
   resources :agencies
@@ -87,4 +89,5 @@ Rails.application.routes.draw do
   resources :dashboard
 
   root to: "welcome#index"
+
 end

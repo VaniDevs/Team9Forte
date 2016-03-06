@@ -25,8 +25,8 @@ development:
   <<: *default
   host: localhost
   database: forte_development
-  username: forte_dev
-  password: testtest
+  username: stephaniebeaton
+  password: null
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
