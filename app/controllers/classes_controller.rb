@@ -1,5 +1,5 @@
 class ClassesController < ApplicationController
-  before_action except: [:index, :apply] do |controller|
+  before_action except: [:index, :apply, :approve, :deny] do |controller|
     controller.restrict_by_type(Agency.to_s, classes_path)
   end
 
@@ -46,6 +46,24 @@ class ClassesController < ApplicationController
 		end
 	end
 
+  def approve
+    user_course = UserCourse.find_by(user_id: request_params[:user_id], course_id: request_params[:course_id])
+    user_course.status = 1
+    user_course.save!
+    respond_to do |format|
+			format.js
+		end
+  end
+
+  def deny
+    user_course = UserCourse.find_by(user_id: request_params[:user_id], course_id: request_params[:course_id])
+    user_course.status = 2
+    user_course.save!
+    respond_to do |format|
+			format.js
+		end
+  end
+
   protected
 
   # security issue, Rails has adopted a standard called "strong parameters" for mass assignment.
@@ -55,5 +73,9 @@ class ClassesController < ApplicationController
 
   def id_params
     params.permit(:id)
+  end
+
+  def request_params
+    params.permit(:user_id, :course_id)
   end
 end
