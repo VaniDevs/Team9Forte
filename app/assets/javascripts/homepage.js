@@ -6,13 +6,10 @@
 // https://maps.googleapis.com/maps/api/geocode/json?address=101+2256+west+7th+avenue+vancouver+bc
 // 1st thing. Convert JSON into required URL
 // 2nd thing. Convert RESPONSE into a place. I need the place ID & the geometry.location
+var map;
       function initMap() {
-        var infowindow;
-        var current;
-        var map;
+        var infowindow, current;
 
-      //  infowindow = new google.maps.InfoWindow({map:map});
-        //console.log(handlePostLocation());
         if (navigator.geolocation){
             navigator.geolocation.getCurrentPosition(function(position) {
                var pos = {
@@ -27,11 +24,10 @@
              infowindow = new google.maps.InfoWindow({map:map});
              infowindow.setPosition(pos);
              infowindow.setContent("Debugging window. SUCCESS!");
+            // !!! replace temp with method to get array
+             var temp = [{address:'2378 west 8th avenue'},{address:'325 howe street'}]
+             handlePostLocation(temp);
 
-            // uncomment once GET is implemented.
-            // need another method that calculates the zoom.
-            // http://stackoverflow.com/questions/32284554/google-maps-distance-based-on-the-zoom-level
-            // getNearbyTasks(pos,zoom);
           });
         }else{
           // Browser doesn't support Geolocation
@@ -46,24 +42,22 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
 
-      var temp = [{address:'2378 west 8th avenue'},{address:'325 howe street'}]
+      var temp = [{address: '44 Water St, Canada'},{address:'325 howe street vancouver bc canada'}]
 
       function handlePostLocation (arr){
+        var geocoder = new google.maps.Geocoder();
+
         for(var i=0;i<arr.length;i++){
-          var url = encodeURI(arr[i].address);
-        if (status === google.maps.GeocoderStatus.OK)
-        $.ajax({
-          url: "https://maps.googleapis.com/maps/api/geocode/json?address="+url,
-          type: 'GET',
-          dataType: 'JSON',
-          complete: function (data) {
-              console.log(data.responseJSON);
-          }
-        });
+          geocoder.geocode({'address': arr[i].address, country: 'CA'}, function (results, status){
+            if (status == google.maps.GeocoderStatus.OK){
+              var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+              });
+            }
+          });
         }
       }
-      handlePostLocation(temp);
-
       function getNearbyTasks(position, zoom){
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function () {
