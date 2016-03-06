@@ -1,5 +1,7 @@
 class TasksController < ApplicationController
-	before_action { |controller| controller.restrict_by_type(Employer.to_s)}, except: [:index]
+	before_action except: [:index] do |controller|
+		controller.restrict_by_type(Employer.to_s, tasks_path)
+	end
 
 	def index
 		@tasks = Task.all
@@ -12,14 +14,11 @@ class TasksController < ApplicationController
 
   def create
     #  redirect to tasks_path if current_user is not an employer
-    employer = Employer.find(email: current_user.email)
-
-    if !employer
-      redirect_to tasks_path
+		begin
+    	employer = Employer.find(email: current_user.email)
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to tasks_path, :flash => { :error => "Cannot find the employer!" } and return
     end
-
-    # find user,  assuming they logged on as employer
-    employer = current_user
 
     @task = Task.new(task_params)
 
