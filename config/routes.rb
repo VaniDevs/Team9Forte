@@ -64,9 +64,16 @@ Rails.application.routes.draw do
     get 'profile'
   end
 
-  resources :tasks
+  resources :tasks do
+    collection do
+      post "apply"
+    end
+
+  end
 
   resources :classes
+
+  resources :user_badges
 
   resources :employers
 
@@ -82,4 +89,5 @@ Rails.application.routes.draw do
   resources :dashboard
 
   root to: "welcome#index"
+
 end

@@ -1,3 +1,4 @@
+
 var map;
 function initMap() {
   var infowindow, current;
@@ -74,3 +75,4 @@ window['handlePostLocation'] = handlePostLocation;
 //
 //   };
 // })(this));
+
