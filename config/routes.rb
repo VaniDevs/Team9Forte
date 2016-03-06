@@ -65,5 +65,11 @@ Rails.application.routes.draw do
 
   resources :classes
 
+  resources :search do
+    collection do
+      get "location"
+    end
+  end
+
   root to: "welcome#index"
 end
