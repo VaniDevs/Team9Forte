@@ -10,7 +10,7 @@
 			<% user_task = current_user.user_tasks.find_by(user_id: current_user.id, task_id: task.id) if user_signed_in? %>
 			<% meets_req = UserTask.new(user_id: current_user.id, task_id: task.id).valid? if user_signed_in?  %>
 			<ul class="task">
-				<li><h3><%= task.title %></h3></li>
+				<li><h3><%= task.title %>&nbsp;<%= link_to "<i class=\"fa fa-wrench\"></i>".html_safe, edit_task_path(task) %>&nbsp;<%= link_to "<i class=\"fa fa-trash-o\"></i>".html_safe, task_path(task), method: :delete, remote: true %></h3></li>
 				<li><h4>Address - <%= task.address %></h4></li>
 				<li><h5>Duration: <%= task.duration %></h5></li>
 				<% if user_signed_in? %><li><h5>Status: <%= user_task.nil? ? "Not Applied" : user_task.task_type.to_s.humanize %></h5></li><% end %>

@@ -4,7 +4,11 @@ class TasksController < ApplicationController
 	end
 
 	def index
-		@tasks = Task.all
+		if (user_signed_in? || agency_signed_in?)
+			@tasks = Task.all
+		elsif (employer_signed_in?)
+			@tasks = current_employer.tasks
+		end
 	end
 
 
@@ -33,6 +37,24 @@ class TasksController < ApplicationController
       render :new
     end
   end
+
+	def edit
+		@task = Task.find(id_params[:id])
+	end
+
+	def update
+		@task = Task.find(id_params[:id])
+
+		if (@task.update_attributes(task_params))
+			redirect_to tasks_path, :notice  => "Successfully updated task."
+		else
+			redirect_to edit_task_path(@task), :error  => "#{@task.errors.full_messages.join(', ')}"
+		end
+	end
+
+	def destroy
+
+	end
 
 	def apply
 		task = Task.find(id_params[:id])
