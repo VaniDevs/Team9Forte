@@ -61,5 +61,7 @@ Rails.application.routes.draw do
     get 'profile'
   end
 
+  resources :tasks
+
   root to: "welcome#index"
 end

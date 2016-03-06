@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160306010322) do
     t.string   "title"
     t.string   "description"
     t.string   "address"
-    t.datetime "start_date",  default: '2016-03-06 01:12:38'
-    t.datetime "end_date",    default: '5327-12-14 01:12:38'
+    t.datetime "start_date",  default: '2016-03-06 02:09:12'
+    t.datetime "end_date",    default: '5327-12-14 02:09:12'
     t.decimal  "duration",    default: 0.0
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
