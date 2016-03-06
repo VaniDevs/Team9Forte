@@ -30,7 +30,7 @@ test_agency = Agency.create(email: "test@knack.com", password: "testtest", passw
 test_employer = Employer.create(email: "test@saveonmeats.com", password: "testtest", password_confirmation: "testtest")
 
 tasks = Array.new
-tasks << Task.create(title: "Dishwasher", description: "Washing dishes...", duration: 1, address: "43 W Hastings St, Vancouver, BC V6B 1G4", start_date: "03/05/2016 00:00", end_date: "03/06/2016 00:00")
+tasks << Task.create(title: "Dishwasher", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque elementum lorem facilisis felis pharetra tempor. In mi justo, posuere in tincidunt non, condimentum euismod erat.", duration: 1, address: "43 W Hastings St, Vancouver, BC V6B 1G4", start_date: "03/05/2016 00:00", end_date: "03/06/2016 00:00")
 
 test_employer.tasks = tasks
 

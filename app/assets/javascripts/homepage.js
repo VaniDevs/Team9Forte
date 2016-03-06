@@ -46,17 +46,23 @@
                               'Error: Your browser doesn\'t support geolocation.');
       }
 
-      function handlePostLocation (){
-        var url = "https://maps.googleapis.com/maps/api/geocode/json?address=101+2256+west+7th+avenue+vancouver+bc";
+      var temp = [{address:'2378 west 8th avenue'},{address:'325 howe street'}]
+
+      function handlePostLocation (arr){
+        for(var i=0;i<arr.length;i++){
+          var url = encodeURI(arr[i].address);
+        if (status === google.maps.GeocoderStatus.OK)
         $.ajax({
-          url: "https://maps.googleapis.com/maps/api/geocode/json?address=101+2256+west+7th+avenue+vancouver+bc",
+          url: "https://maps.googleapis.com/maps/api/geocode/json?address="+url,
           type: 'GET',
           dataType: 'JSON',
           complete: function (data) {
-              alert(JSON.stringify(data));
+              console.log(data.responseJSON);
           }
         });
+        }
       }
+      handlePostLocation(temp);
 
       function getNearbyTasks(position, zoom){
         var xhttp = new XMLHttpRequest();
