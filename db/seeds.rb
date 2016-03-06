@@ -24,3 +24,14 @@ badges << Badge.create(name: "Workplace Communication", skill_type: "soft_skill"
 test_user = User.create(email: "test@test.com", password: "testtest", password_confirmation: "testtest")
 test_user.badges << badges.first
 test_user.badges << badges.last
+
+test_agency = Agency.create(email: "test@knack.com", password: "testtest", password_confirmation: "testtest")
+
+test_employer = Employer.create(email: "test@saveonmeats.com", password: "testtest", password_confirmation: "testtest")
+
+tasks = Array.new
+tasks << Task.create(title: "Dishwasher", description: "Washing dishes...", duration: 1, address: "43 W Hastings St, Vancouver, BC V6B 1G4", start_date: "03/05/2016 00:00", end_date: "03/06/2016 00:00")
+
+test_employer.tasks = tasks
+
+test_user.tasks << tasks.first
