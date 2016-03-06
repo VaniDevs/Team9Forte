@@ -35,12 +35,14 @@
 						<div class="col-md-12">
 							<a href="/" class="showBadge" onclick="return false"/>View the list of required badges</a>
 						</div>
-						<div class="col-md-12 badges-required">
+						<div class="col-md-12">
 							<ul>
 									<% task.badges.each do |badge| %>
 									<li>
-										<%= image_tag(badge.image, size: "150", alt: "Badges") %>
-										<p><%= badge.name %></p>
+										<div class="badges-required">
+											<%= image_tag(badge.image, size: "150", alt: "Badges") %>
+											<p><%= badge.name %></p>
+										</div>
 									</li>
 									<% end %>
 							</ul>
@@ -64,8 +66,8 @@
 
 <script>
 	$(".showBadge").click(function(){
-    $(".badges-required").toggle();
-});
+    $(this).parent().parent().find((".badges-required")).last().toggle()
+	});
 </script>
 
 
