@@ -12,11 +12,18 @@ $color4: #A7A8AA; //cool grey
       -ms-border-radius: $radius;
           border-radius: $radius;
 }
-
+#content{
+  width:100%;
+  position: relative;
+  min-height:750px;
+  background:url('http://www.knackworks.ca/wp-content/uploads/2015/11/potluck-cafe-society.jpg') no-repeat top left;
+  background-size:cover;
+  overflow:hidden;
+}
 .home{
-  background-color:$color4;
   display: block;
   width: 100%;
+  margin-top:5%;
   height: auto;
   position:relative;
   text-align:center;
@@ -25,7 +32,15 @@ $color4: #A7A8AA; //cool grey
   padding:15px;
   width:50%;
   margin:15px auto;
-  background-color:rgba(255,255,255,0.5);
+  background-color:$color2;
+  color:#fff;
+  font-size:1.142em;
+  text-decoration:none;
   display:block;
   @include border-radius(10px);
+}
+.btn-signin{
+  background-color:$color1;
+  color:#fff;
+  text-decoration:none;
 }
