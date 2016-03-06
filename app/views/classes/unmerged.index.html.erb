@@ -6,7 +6,6 @@
     <li><%= course.description %></li>
     <li>Status: <%= course.status %></li>
 		<li>Max Capacity: <%= course.capacity %></li>
-<<<<<<< HEAD
     <li>Start Date: <%= course.start_date %></li>
     <li>End Date: <%= course.end_date %></li>
 	</ul>
@@ -15,10 +14,6 @@
 <% if (agency_signed_in?) %>
 <%= link_to '<i class="fa fa-plus"></i> Add Class'.html_safe, new_class_path, class: "btn btn-primary" %>
 <% end %>
-=======
-		<li><%= link_to("Sign Up for the class", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %></li>
-	</ul>
-<% end %>
+
 	</div>
 </div>
->>>>>>> 2d02f48e3418d9e883116d08153110709922aa1b
