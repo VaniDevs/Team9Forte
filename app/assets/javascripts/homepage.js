@@ -1,10 +1,10 @@
 var map;
 function initMap() {
-  var infowindow, current;
+  var infowindow, current, pos;
 
   if (navigator.geolocation){
       navigator.geolocation.getCurrentPosition(function(position) {
-         var pos = {
+          pos = {
            lat: position.coords.latitude,
            lng: position.coords.longitude
          };
@@ -16,7 +16,8 @@ function initMap() {
        infowindow = new google.maps.InfoWindow({map:map});
        infowindow.setPosition(pos);
        infowindow.setContent("Debugging window. SUCCESS!");
-      // !!! replace temp with method to get array
+       // !!! uncomment below and remove mock data once service call is in place.
+       // temp = getNearbyTasks(pos, 10)
        var temp = [{address:'2378 west 8th avenue, Vancouver, BC'},{address:'325 howe street, Vancouver, BC'}]
        handlePostLocation(temp);
 
@@ -51,18 +52,22 @@ function handlePostLocation (arr) {
   }
 }
 
+
 function getNearbyTasks(position, zoom){
-  var xhttp = new XMLHttpRequest();
-  xhttp.onreadystatechange = function () {
-    var lat, lng;
-    lat = position.lat;
-    if (xhttp.readyState == 4 && xhttp.status == 200){
-      lng = position.lng
-      xhttp.open("GET", "tasks.json?coordinates={lat:" + lat + ",lng:" + lng +"}", true);
-      xhttp.send();
+  var url = "search/tasks?lat=" + position.lat + "&long=" + position.long +"&zoom=" zoom;
+  $.ajax{
+    url: url,
+    type: GET,
+    contentType: 'application/json; charset=utf-8',
+    success: function(response){
+      return response;
+      }
+    error: function(){
+      console.log("Error! Cannot get tasks");
+      }
+
     }
   }
-}
 
 
 window['initMap'] = initMap;
