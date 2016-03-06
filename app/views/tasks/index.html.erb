@@ -49,7 +49,7 @@
 					<div class="col-md-4">
 						<% if (user_signed_in? && user_task.nil? && meets_req) %>
 							<%= link_to("Apply", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %>
-						<% elsif (user_task.nil? && !meets_req) %>
+						<% elsif (user_signed_in? && user_task.nil? && !meets_req) %>
 							<a href="javascript:" class="denied">Missing Required Badge</a>
 						<% end %>
 					</div>
