@@ -65,5 +65,8 @@ Rails.application.routes.draw do
 
   resources :classes
 
+  resources :user_badges
+
   root to: "welcome#index"
+
 end

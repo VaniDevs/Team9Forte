@@ -22,8 +22,17 @@ badges << Badge.create(name: "Time Management", skill_type: "soft_skill", image:
 badges << Badge.create(name: "Workplace Communication", skill_type: "soft_skill", image:"SoftSkill_WORKPLACE-COMMUNICATION.jpg")
 
 test_user = User.create(email: "test@test.com", password: "testtest", password_confirmation: "testtest")
+test_user2 = User.create(email: "test2@test.com", password: "testtest", password_confirmation: "testtest")
+test_user3 = User.create(email: "test3@test.com", password: "testtest", password_confirmation: "testtest")
 test_user.badges << badges.first
 test_user.badges << badges.last
+
+test_user2.badges << badges.first
+test_user2.badges << badges.last
+
+test_user3.badges << badges.first
+test_user3.badges << badges.last
+
 
 test_agency = Agency.create(email: "test@knack.com", password: "testtest", password_confirmation: "testtest")
 
@@ -35,3 +44,5 @@ tasks << Task.create(title: "Dishwasher", description: "Washing dishes...", dura
 test_employer.tasks = tasks
 
 test_user.tasks << tasks.first
+
+

@@ -60,6 +60,8 @@
                 <li><span>Hello <%= link_to current_agency.email, "/agencies/#{current_agency.id}" %></span> <span>(<%= link_to "not you?", destroy_agency_session_path, :method => :delete %>)</span> !</li>
                 <li><%= link_to 'Tasks', tasks_path %></li>
                 <li><%= link_to 'Classes', classes_path %></li>
+                <li><%= link_to 'Assign Badges', users_path %></li>
+
               <% else %>
                 <li><%= link_to 'Sign in', new_user_session_path %></li>
               <% end %>
