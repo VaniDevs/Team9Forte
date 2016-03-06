@@ -1,0 +1,54 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$color1: #468074; //dark green
+$color2: #A4D65E; //light green
+$color3: #FFD100; //yellow
+$color4: #A7A8AA; //cool grey
+
+@mixin circle($width, $color, $textcolor) {
+  width: $width;
+  height: $width;
+  background: $color;
+  color: $textcolor;
+  -webkit-border-radius: $width/2;
+     -moz-border-radius: $width/2;
+          border-radius: $width/2;
+}
+
+.profile{
+  ul{
+    list-style: none;
+    padding:0;
+    margin:0;
+  }
+  li{
+    font-size:1.14em;
+    display:block;
+    padding:5px;
+    margin-bottom:10px;
+  }
+}
+.achievement{
+  text-align: center;
+  font-weight:700;
+  p{
+    display:block;
+    position:relative;
+  }
+}
+
+@for $i from 1 through 4 {
+  .circle-#{$i} {
+    @include circle(80px,$color1,#ffffff);
+    font-size:1.785em;
+    display:block;
+    padding:20px;
+    margin:5px auto;
+    position:relative;
+  }
+}
+
+.badge-box{
+  border:1px solid $color4;
+}

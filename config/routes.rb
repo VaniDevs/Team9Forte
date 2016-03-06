@@ -55,6 +55,9 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   resources :welcome
+  resources :users do
+    get 'profile'
+  end
 
   root to: "welcome#index"
 end
