@@ -26,8 +26,6 @@ class ClassesController < ApplicationController
       redirect_to classes_path, :flash => { :error => "Cannot find the agency!" } and return
     end
 
-    byebug
-
     @class = Course.new(class_params)
 
     agency.courses << @class

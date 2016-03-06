@@ -3,7 +3,7 @@
 <!-- The href of the button to launch the modal must match the id of the modal dialog. -->
 <hr>
 <% @users.each do |user| %>
-  <div>
+  <div class="forte-users-badge-assign">
 
       <%= form_for @userbadge  do |f| %>
 
@@ -15,7 +15,7 @@
 
           <%= select("user_badge", "badge_id", Badge.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}) %>
 
-         <%= f.submit "Save" %>
+         <%= f.submit "Save" ,class: "btn btn-primary" %>
 
       <% end %>
   </div>
