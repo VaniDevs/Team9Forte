@@ -35,3 +35,15 @@ tasks << Task.create(title: "Dishwasher", description: "Washing dishes...", dura
 test_employer.tasks = tasks
 
 test_user.tasks << tasks.first
+
+#courses = Array.new
+#courses << Course.new(status: 0, badge_id: badges.first.id, )
+
+
+# t.integer status, default: 0, null: false
+# t.references(:badge)
+# t.datetime :start_date, :default => DateTime.now
+# t.datetime :end_date, :default => DateTime.now
+# t.integer  :capacity, default: 0, null: false
+#
+# t.timestamps null: false
