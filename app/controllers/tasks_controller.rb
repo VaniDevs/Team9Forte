@@ -22,7 +22,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    # byebug
+
 
 		begin
     	employer = Employer.find(params[:task][:employer_id])
@@ -31,6 +31,8 @@ class TasksController < ApplicationController
     end
 
     @task = Task.new(task_params)
+
+    @task.badges << Badge.find(params[:task_badge][:badge_id].to_i)
 
     employer.tasks << @task
 
