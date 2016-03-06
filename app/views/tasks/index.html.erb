@@ -8,6 +8,7 @@
 	<div class="col-xs-12 col-sm-10 col-sm-offset-1">
 		<% @tasks.each do |task| %>
 			<% user_task = current_user.user_tasks.find_by(user_id: current_user.id, task_id: task.id) if user_signed_in? %>
+			<% meets_req = UserTask.new(user_id: current_user.id, task_id: task.id).valid? if user_signed_in?  %>
 			<ul class="task">
 				<li><h3><%= task.title %></h3></li>
 				<li><h4>Address - <%= task.address %></h4></li>
@@ -18,15 +19,19 @@
 				<li><a href="/" class="showBadge" onclick="return false"/>View the list of required badges</a></li>
 				<li class="badges-required">
 					<ul>
+							<% task.badges.each do |badge| %>
 							<li>
-		            <%= image_tag('SoftSkill_COMPUTER-LITERACY.jpg', size: "150", alt: "Badges") %>
-		            <p>COMPUTER-LITERACY</p>
+		            <%= image_tag(badge.image, size: "150", alt: "Badges") %>
+		            <p><%= badge.name %></p>
 							</li>
+							<% end %>
 					</ul>
 
 				</li>
-				<% if (user_signed_in? && user_task.nil?) %>
+				<% if (user_signed_in? && user_task.nil? && meets_req) %>
 					<li><%= link_to("Apply", { :action => "apply", :id => task.id }, class: "apply", method: :post, remote: true) %></li>
+				<% elsif (user_task.nil? && !meets_req) %>
+					<li><a href="javascript:" class="denied">Does Not Meet Requirements</a></li>
 				<% end %>
 			</ul>
 		<% end %>
