@@ -1,6 +1,5 @@
 class WelcomeController < ApplicationController
   skip_before_action :authenicate_override
-  before_action :signed_in, only: [:index]
 
   def index
   end
