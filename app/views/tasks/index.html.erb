@@ -1,1 +1,8 @@
-Test 
+<% @tasks.each do |task| %>
+	<div>
+		Title: <%= task.title %><br />
+		Description: <%= task.description %><br />
+		Duration: <%= task.duration %><br />
+		Address: <%= task.address %>
+	</div>
+<% end %>
