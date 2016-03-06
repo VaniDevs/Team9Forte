@@ -75,6 +75,7 @@ Rails.application.routes.draw do
   resources :search do
     collection do
       get "location"
+      get "tasks"
     end
   end
 
