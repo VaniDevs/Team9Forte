@@ -39,11 +39,11 @@ class TasksController < ApplicationController
   end
 
 	def edit
-		@task = Task.find(id_params[:id])
+		@task = current_employer.tasks.find(id_params[:id])
 	end
 
 	def update
-		@task = Task.find(id_params[:id])
+		@task = current_employer.tasks.find(id_params[:id])
 
 		if (@task.update_attributes(task_params))
 			redirect_to tasks_path, :notice  => "Successfully updated task."
@@ -53,7 +53,11 @@ class TasksController < ApplicationController
 	end
 
 	def destroy
-
+		@task = current_employer.tasks.find(id_params[:id])
+		respond_to do |format|
+			current_employer.tasks.delete(@task)
+			format.js
+		end
 	end
 
 	def apply
