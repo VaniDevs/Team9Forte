@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160306005740) do
+ActiveRecord::Schema.define(version: 20160306010322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20160306005740) do
     t.string   "title"
     t.string   "description"
     t.string   "address"
-    t.datetime "start_date",  default: '2016-03-06 01:00:13'
-    t.datetime "end_date",    default: '5327-12-14 01:00:13'
+    t.datetime "start_date",  default: '2016-03-06 01:12:38'
+    t.datetime "end_date",    default: '5327-12-14 01:12:38'
     t.decimal  "duration",    default: 0.0
     t.datetime "created_at",                                  null: false
     t.datetime "updated_at",                                  null: false
@@ -91,6 +91,17 @@ ActiveRecord::Schema.define(version: 20160306005740) do
 
   add_index "user_badges", ["badge_id"], name: "index_user_badges_on_badge_id", using: :btree
   add_index "user_badges", ["user_id"], name: "index_user_badges_on_user_id", using: :btree
+
+  create_table "user_tasks", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.integer  "task_type",  default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "user_tasks", ["task_id"], name: "index_user_tasks_on_task_id", using: :btree
+  add_index "user_tasks", ["user_id"], name: "index_user_tasks_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
