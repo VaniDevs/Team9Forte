@@ -16,6 +16,15 @@
  *= require bootstrap-datepicker
  *= require bootstrap_and_overrides
  */
+ body{
+   position:relative;
+   margin:0;
+ }
+ #content{
+   width:100%;
+   position: relative;
+   min-height:750px;
+ }
 h1{
   font-size:2.857em;
 }

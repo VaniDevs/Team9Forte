@@ -12,8 +12,19 @@
 				<li><h4>Address - <%= task.address %></h4></li>
 				<li><h5>Duration: <%= task.duration %></h5></li>
 				<li><p><%= task.description %></p></li>
+<<<<<<< HEAD
 				<li><a href="/"/>View the list of required badges</a></li>
 				<li class="badges-required">
+=======
+				<li><a href="/" class="showBadge" onclick="return false"/>View the list of required badges</a></li>
+				<li class="badges-required">
+					<ul>
+							<li>
+		            <%= image_tag('SoftSkill_COMPUTER-LITERACY.jpg', size: "150", alt: "Badges") %>
+		            <p>COMPUTER-LITERACY</p>
+							</li>
+					</ul>
+>>>>>>> master
 				</li>
 				<li><a href="/" class="apply">Apply</a></li>
 			</ul>
@@ -21,6 +32,14 @@
 <% if (employer_signed_in?) %>
 <%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, new_task_path, class: "btn btn-primary" %>
 <% end %>
+<<<<<<< HEAD
+=======
+<script>
+	$(".showBadge").click(function(){
+    $(".badges-required").toggle();
+});
+</script>
+>>>>>>> master
 
 	</div>
 </div>
