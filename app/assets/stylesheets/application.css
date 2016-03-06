@@ -16,6 +16,17 @@
  *= require bootstrap-datepicker
  *= require bootstrap_and_overrides
  */
+ body{
+   position:relative;
+   margin:0;
+ }
+ #content{
+   width:100%;
+   position: relative;
+   background:url('http://www.knackworks.ca/wp-content/uploads/2015/11/potluck-cafe-society.jpg') no-repeat top left;
+   min-height:750px;
+   overflow:hidden;
+ }
 h1{
   font-size:2.857em;
 }
