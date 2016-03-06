@@ -23,8 +23,4 @@ Gemfile.lock
 app/views/users/_assign_badges.html.erb
 app/views/users/backup.index.html.erb
 app/controllers/project_controller.rb
-app/assets/javascripts/users.js
 config/database.yml
-
-app/views/agencies/show.html.erb
-app/views/classes/index.html.erb
