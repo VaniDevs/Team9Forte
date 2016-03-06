@@ -1,8 +1,15 @@
-<% @tasks.each do |task| %>
-	<div>
-		Title: <%= task.title %><br />
-		Description: <%= task.description %><br />
-		Duration: <%= task.duration %><br />
-		Address: <%= task.address %>
+<div class="row tasks">
+	<div class="col-xs-12 col-sm-10 col-md-8 col-md-offset-2">
+			<h2>Available Tasks</h2>
+		<h3>Map</h3>
+		<% @tasks.each do |task| %>
+			<ul>
+				<li><h4>Title</h4><p><%= task.title %></p></li>
+				<li>Description: <%= task.description %></li>
+				<li>Duration: <%= task.duration %></li>
+				<li>Address: <%= task.address %></li>
+				<li>Requires: </li>
+			</ul>
+		<% end %>
 	</div>
-<% end %>
+</div>
