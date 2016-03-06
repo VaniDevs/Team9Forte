@@ -73,6 +73,8 @@ Rails.application.routes.draw do
   resources :classes do
     collection do
       post "apply"
+      post "approve"
+      post "deny"
     end
   end
 
