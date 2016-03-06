@@ -63,5 +63,7 @@ Rails.application.routes.draw do
 
   resources :tasks
 
+  resources :classes
+
   root to: "welcome#index"
 end
