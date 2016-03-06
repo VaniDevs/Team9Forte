@@ -1,3 +1,5 @@
+<%= link_to '<i class="fa fa-plus"></i> Add Task'.html_safe, new_task_path, class: "btn btn-primary" %>
+
 <% @tasks.each do |task| %>
 	<div>
 		Title: <%= task.title %><br />
